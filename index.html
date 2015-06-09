@@ -12,6 +12,7 @@
 	<body>
 		<header>
 			<h1>Movie Searcher</h1>
+			<p>Find all you need to know about your fave movies!</p>
 		</header>
 
 		<div id="container">
@@ -20,8 +21,27 @@
     			<input type="search" name="search" id="search">
             	<input type="submit" value="Search" id="submit">
     		</form>
+
+    		<div id="results">
+    			<img id="poster" src="http://ia.media-imdb.com/images/M/MV5BMTA2NjIxNTQ4MTdeQTJeQWpwZ15BbWU4MDMxMzMwMTQx._V1_SX300.jpg" alt=""/>
+	    		<ul id="movie-details">
+	    			<li><span>Title:</span> Hacker's Game</li>
+	    			<li><span>Year Released:</span> 6 Mar 2015</li>
+	    			<li><span>Genre: </span>Drama</li>
+	    			<li><span>Plot:</span> A love story between two hackers, Soyan and Loise. Like many other hackers, Soyan works for a company he previously hacked.</li>
+	    			<li><span>Director:</span> Cyril Morin</li>
+	    			<li><span>Cast:</span> Pom Klementieff, Chris Schellenger, King Orba, Alena von Stroheim</li>
+	    			<li><span>Runtime: </span>90 min</li>
+	    			<li><span>Rated:</span> N/A</li>
+	    			<li><span>Rating:</span> 3.8</li>
+	    		</ul>
+	    	</div>
 		</div>
 		
+		<footer>
+			<p>Copyright 2015 | site created by Luciano Bruzzoni</p>
+			<p>Special thanks to <a href=http://www.omdbapi.com/>OMDb API</a></p>
+		</footer>
 
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/app.js"></script>
