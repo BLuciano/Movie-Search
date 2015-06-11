@@ -17,8 +17,8 @@ $(document).ready(function(){
         };
 
         function displayMovie(data){
-        	var posterImage = "<img id='poster' src=";
-        	var movieInfo = "<ul id='movie-details'>"; 
+        	var posterImage = "<img class='poster' src=";
+        	var movieInfo = "<ul class='movie-details'>"; 
         
         	posterImage += "'" + data.Poster + "' alt='" + data.Title +"'/>";
         	movieInfo += '<li><span>Title: </span> ' + data.Title + '</li>';
