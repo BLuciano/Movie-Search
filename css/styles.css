@@ -42,7 +42,7 @@ FORM SECTION
 	text-align: center;
 	width: 90%;
 	margin: 0 auto;
-	height: 1000px;
+	height: 900px; /*Extra space when page loads and theres nothing to display */
 }
 
 
@@ -75,18 +75,20 @@ MOVIE RESULTS SECTION
 
 #results{
 	background-color: #403f3d;
-	margin-bottom: 100px;
+	margin-bottom: 25px;
 	padding-bottom: 15px;
+	display: none;
 }
 
 #results img{
+	margin-top: 25px;
 	border-radius: 150px;
 }
 
 #results ul{
 	text-align: left;
 	margin: 30px 2.5%;
-	line-height: 175%;
+	line-height: 200%;
 	font-size: .90em;
 }
 

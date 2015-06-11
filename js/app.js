@@ -32,6 +32,9 @@ $(document).ready(function(){
         	movieInfo += '<li><span>Rating: </span>' + data.imdbRating + '</li>';
         	movieInfo += "</ul>";
 
+            $("#container").css("height", "auto");
+            $("#results").css("display", "block");
+           
         	$("#results").html(posterImage);
         	$("#results").append(movieInfo);
         	$search.prop("disabled", false);
