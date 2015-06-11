@@ -12,36 +12,56 @@ $(document).ready(function(){
         var movieRequest = $search.val();
         var omdbUrl = "http://www.omdbapi.com/";
         var omdbOpts = {
-        	t: movieRequest,
+        	s: movieRequest,
             r: "json"
         };
 
-        function displayMovie(data){
-        	var posterImage = "<img class='poster' src=";
-        	var movieInfo = "<ul class='movie-details'>"; 
-        
-        	posterImage += "'" + data.Poster + "' alt='" + data.Title +"'/>";
-        	movieInfo += '<li><span>Title: </span> ' + data.Title + '</li>';
-        	movieInfo += '<li><span>Year Released: </span> ' + data.Released + '</li>';
-        	movieInfo += '<li><span>Genre: </span> ' + data.Genre + '</li>';
-        	movieInfo += '<li><span>Plot: </span> ' + data.Plot + '</li>';	
-        	movieInfo += '<li><span>Director: </span> ' + data.Director + '</li>';	
-        	movieInfo += '<li><span>Cast: </span> ' + data.Actors + '</li>';	
-        	movieInfo += '<li><span>Runtime: </span>' + data.Runtime + '</li>';	
-        	movieInfo += '<li><span>Rated: </span>' + data.Rated + '</li>';
-        	movieInfo += '<li><span>Rating: </span>' + data.imdbRating + '</li>';
-        	movieInfo += "</ul>";
+        function searchMovie(data){
+        	 var count = 0;
+             var movieInfo;
+            $.each(data.Search, function(i, movie){    //use Ajax again to get specific info from each search result.
+                movieRequest = movie.Title;
+                omdbOpts = {
+                    t: movieRequest,
+                    r: "json",
+                    y: movie.Year
+                };
+                $.getJSON(omdbUrl, omdbOpts, displayMovie);
+            }); // end of each
 
-            $("#container").css("height", "auto");
-            $("#results").css("display", "block");
+            function displayMovie(data){
+                movieInfo = "";
+                count++;
+                console.log(count);
+                console.log(data.Title);
+                if(data.Title === undefined){
+                    return;
+                } else{
+                    movieInfo += "<div class='results'>";
+                    movieInfo += "<img class='poster' src='" + data.Poster + "' alt='" + data.Title +"'/>";
+                	movieInfo += "<ul class='movie-details'>"; 
+                    movieInfo += '<li><span>Title: </span> ' + data.Title + '</li>';
+                	movieInfo += '<li><span>Year Released: </span> ' + data.Released + '</li>';
+                	movieInfo += '<li><span>Genre: </span> ' + data.Genre + '</li>';
+                	movieInfo += '<li><span>Plot: </span> ' + data.Plot + '</li>';	
+                	movieInfo += '<li><span>Director: </span> ' + data.Director + '</li>';	
+                	movieInfo += '<li><span>Cast: </span> ' + data.Actors + '</li>';	
+                	movieInfo += '<li><span>Runtime: </span>' + data.Runtime + '</li>';	
+                	movieInfo += '<li><span>Rated: </span>' + data.Rated + '</li>';
+                	movieInfo += '<li><span>Rating: </span>' + data.imdbRating + '</li>';
+                    movieInfo += '<li><span>Type: </span>' + data.Type + '</li>';
+                	movieInfo += "</ul></div>";
+                    $("#all-movies").append(movieInfo);
+                } //end of if-else    
+            }    // end of displayMovie
            
-        	$("#results").html(posterImage);
-        	$("#results").append(movieInfo);
+            $("#container").css("height", "auto");
         	$search.prop("disabled", false);
         	$search.prop("value", " ");
         	$submit.attr("disabled", false).val("Search");
-        } //end displayMovie function
+        } //end searchMovie function
 
-        $.getJSON(omdbUrl, omdbOpts, displayMovie);
+        $("#all-movies").html("");
+        $.getJSON(omdbUrl, omdbOpts, searchMovie);
  	});  //end of form submit function
 });  //end of ready function

@@ -75,26 +75,25 @@ input[type="submit"]{
 MOVIE RESULTS SECTION
 /////////////////////////////////*/
 
-#results{
+.results{
 	background-color: #403f3d;
 	margin-bottom: 25px;
 	padding-bottom: 15px;
-	display: none;
 }
 
-#results img{
+.results img{
 	margin-top: 25px;
 	border-radius: 150px;
 }
 
-#results ul{
+.results ul{
 	text-align: left;
 	margin: 30px 2.5%;
 	line-height: 200%;
 	font-size: .90em;
 }
 
-#results ul li span{
+.results ul li span{
 	color: yellow;
 }
 
@@ -133,7 +132,7 @@ MEDIA QUERIES
 		padding-top: 25px;
 	}
 
-	#results{
+	.results{
 		overflow: hidden;  /* magic to make the floated image take space */
 	}
 
@@ -143,7 +142,7 @@ MEDIA QUERIES
 }
 
 @media screen and (min-width: 1000px){
-	#results{
+	.results{
 		width: 900px;
 		margin-left: auto;
 		margin-right: auto;
