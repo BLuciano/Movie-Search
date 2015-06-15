@@ -35,11 +35,17 @@
     function displayMovie(data){
         var movieInfo = " ";
             
-        if(data.Title === undefined){
+        if(data.Title === undefined){  // Check to see if there are any movies with that title
             // do nothing
         } else{
             movieInfo += "<div class='results'>";
-            movieInfo += "<img class='poster' src='" + data.Poster + "' alt='" + data.Title +"'/>";
+            
+            if(data.Poster === "N/A"){  //Check to see if there is a poster image available.
+                movieInfo += "<img class='poster' src='img/no-image.jpg' alt='" + data.Title + "'/>";
+            } else{
+                movieInfo += "<img class='poster' src='" + data.Poster + "' alt='" + data.Title + "'/>";
+            }
+            
             movieInfo += "<ul class='movie-details'>"; 
             movieInfo += '<li><span>Title: </span> ' + data.Title + '</li>';
             movieInfo += '<li><span>Year Released: </span> ' + data.Released + '</li>';
