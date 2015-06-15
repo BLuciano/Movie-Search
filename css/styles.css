@@ -128,12 +128,12 @@ MEDIA QUERIES
 	}
 
 	.movie-details{
-		float right;
 		padding-top: 25px;
+		overflow: hidden; /*Stops text from wrapping under image*/
 	}
 
 	.results{
-		overflow: hidden;  /* magic to make the floated image take space */
+		overflow: hidden;  /* make floated image take space and not overlap footer */
 	}
 
 	footer{

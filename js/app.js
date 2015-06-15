@@ -51,6 +51,8 @@
             movieInfo += '<li><span>Rated: </span>' + data.Rated + '</li>';
             movieInfo += '<li><span>Rating: </span>' + data.imdbRating + '</li>';
             movieInfo += '<li><span>Type: </span>' + data.Type + '</li>';
+            movieInfo += '<li><span>Awards: </span>' + data.Awards + '</li>';
+            movieInfo += '<li><span>Country: </span>' + data.Country + '</li>';
             movieInfo += "</ul></div>";
             $("#all-movies").append(movieInfo);
         } //end of if-else    
