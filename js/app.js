@@ -16,22 +16,31 @@
     };
 
     function searchMovie(data){
-        $.each(data.Search, function(i, movie){    //use Ajax again to get specific info from each search result.
-            movieRequest = movie.Title;
-            omdbOpts = {
-                t: movieRequest,
-                r: "json",
-                y: movie.Year
-            };
-            $.getJSON(omdbUrl, omdbOpts, displayMovie);
-        }); // end of each
-
-        $("#container").css("height", "auto");
+        if(data.Search === undefined){   //Check to see if there is data to display
+            $("#container").css("height", "500px");
+        } else{
+            $.each(data.Search, function(i, movie){    //use Ajax again to get specific info from each search result.
+                movieRequest = movie.Title;
+                omdbOpts = {
+                    t: movieRequest,
+                    r: "json",
+                    y: movie.Year
+                };
+                $.getJSON(omdbUrl, omdbOpts, displayMovie);
+            }); // end of each
+            
+            $("#container").css("height", "auto");
+        }//end if-else
+        
         $search.prop("disabled", false);
         $search.prop("value", " ");
         $submit.attr("disabled", false).val("Search");
     }   // end of searchMovie
         
+    $(document).ajaxError(function(event, request, settings){
+    
+    });   //end of ajaxComplete handler
+
     function displayMovie(data){
         var movieInfo = " ";
             
@@ -67,4 +76,5 @@
     $("#all-movies").html("");
     $.support.cors = true; // fixes ajax-json call for IE browsers.
     $.getJSON(omdbUrl, omdbOpts, searchMovie);
-});  //end of form submit function
+});  //end of form submit handler
+
