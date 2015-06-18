@@ -15,9 +15,22 @@
         r: "json"
     };
 
+    $("#all-movies").html("");
+    $("#error-message").html("");
+    $.support.cors = true; // fixes ajax-json call for IE browsers.
+    $.getJSON(omdbUrl, omdbOpts, searchMovie);
+
+
+    $(document).ajaxError(function( event, request, settings ) {
+        $("#container").css("height", "500px");
+        $("#error-message").html("<p>Error requesting page from the server</p>");
+        buttonReset();
+    });
+
     function searchMovie(data){
         if(data.Search === undefined){   //Check to see if there is data to display
             $("#container").css("height", "500px");
+            $("#error-message").html("<p>There are no results for " + movieRequest + "</p>");
         } else{
             $.each(data.Search, function(i, movie){    //use Ajax again to get specific info from each search result.
                 movieRequest = movie.Title;
@@ -32,14 +45,9 @@
             $("#container").css("height", "auto");
         }//end if-else
         
-        $search.prop("disabled", false);
-        $search.prop("value", " ");
-        $submit.attr("disabled", false).val("Search");
+        buttonReset();
     }   // end of searchMovie
-        
-    $(document).ajaxError(function(event, request, settings){
     
-    });   //end of ajaxComplete handler
 
     function displayMovie(data){
         var movieInfo = " ";
@@ -71,10 +79,14 @@
             movieInfo += "</ul></div>";
             $("#all-movies").append(movieInfo);
         } //end of if-else    
-    }    // end of displayMovie
-           
-    $("#all-movies").html("");
-    $.support.cors = true; // fixes ajax-json call for IE browsers.
-    $.getJSON(omdbUrl, omdbOpts, searchMovie);
+    }    // end of displayMovie  
+
+    function buttonReset(){
+        $search.prop("disabled", false);
+        $search.prop("value", " ");
+        $submit.attr("disabled", false).val("Search");
+    }  //end of buttonSubmit function      
 });  //end of form submit handler
+
+
 

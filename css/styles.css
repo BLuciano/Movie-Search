@@ -75,6 +75,13 @@ input[type="submit"]{
 MOVIE RESULTS SECTION
 /////////////////////////////////*/
 
+#error-message{
+	font-style: italic;
+	color: red;
+	text-align: center;
+	margin: 0 auto;
+}
+
 .results{
 	background-color: #403f3d;
 	margin-bottom: 25px;
