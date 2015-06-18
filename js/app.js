@@ -65,5 +65,6 @@
     }    // end of displayMovie
            
     $("#all-movies").html("");
+    $.support.cors = true; // fixes ajax-json call for IE browsers.
     $.getJSON(omdbUrl, omdbOpts, searchMovie);
 });  //end of form submit function
