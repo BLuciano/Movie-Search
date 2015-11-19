@@ -57,12 +57,18 @@
         } else{
             movieInfo += "<div class='results'>";
             
+            /*Removing this chunck of code until the API launches their image poster option.
+            Until then the default no-image image will be used for all queries to fill the space.
+            
             if(data.Poster === "N/A"){  //Check to see if there is a poster image available.
                 movieInfo += "<img class='poster' src='img/no-image.jpg' alt='" + data.Title + "'/>";
             } else{
                 movieInfo += "<img class='poster' src='" + data.Poster + "' alt='" + data.Title + "'/>";
             }
-            
+            */
+            movieInfo += "<img class='poster' src='img/no-image.jpg' alt='" + data.Title + "'/>";
+            //Remove above line of code when image API option is available 
+
             movieInfo += "<ul class='movie-details'>"; 
             movieInfo += '<li><span>Title: </span> ' + data.Title + '</li>';
             movieInfo += '<li><span>Year Released: </span> ' + data.Released + '</li>';
