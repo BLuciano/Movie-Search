@@ -89,7 +89,7 @@
 
     function buttonReset(){
         $search.prop("disabled", false);
-        $search.prop("value", " ");
+        $search.prop("value", "");
         $submit.attr("disabled", false).val("Search");
     }  //end of buttonSubmit function      
 });  //end of form submit handler
